@@ -9,7 +9,7 @@ const app = express();
 const swaggerOptions = {
   swaggerDefinition: {
     info: {
-      title: 'Hello World API-Rest Dayanara',
+      title: 'Hello World API-Rest Dayanara Churaco',
       version: '1.0.0',
       description: 'Simple Hello World API with Swagger',
     },
