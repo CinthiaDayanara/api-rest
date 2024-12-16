@@ -1,6 +1,7 @@
 const express = require('express');
 const swaggerJsdoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
+const path = require('path');
 
 const app = express();
 
@@ -20,7 +21,12 @@ const swaggerDocs = swaggerJsdoc(swaggerOptions);
 // Definir el endpoint Swagger UI
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
-// Definir el endpoint REST
+// Endpoint para servir el HTML con el estilo embebido
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
+});
+
+// Endpoint REST de ejemplo
 /**
  * @swagger
  * /:
@@ -30,7 +36,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
  *       200:
  *         description: Hello World message
  */
-app.get('/', (req, res) => {
+app.get('/api', (req, res) => {
   res.send('Hello World - REST API');
 });
 
