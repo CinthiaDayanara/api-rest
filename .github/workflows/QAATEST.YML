@@ -30,7 +30,7 @@ jobs:
         with:
           context: .               # Usa el Dockerfile desde la raíz
           push: true               # Sube la imagen a Docker Hub
-          tags: dayanara1898/rest-project:latest # Etiqueta como "latest"
+          tags: dayanara1898/html-project:latest # Etiqueta como "latest"
 
   # Trabajo 2: Desplegar la nueva imagen en la instancia EC2
   deploy:
@@ -56,9 +56,9 @@ jobs:
           port: 22
           script: |
             # Detener y eliminar el contenedor si ya existe
-            docker stop rest-container || true
-            docker rm rest-container || true
+            docker stop html-container || true
+            docker rm html-container || true
             # Extraer la última versión de la imagen desde Docker Hub
-            docker pull dayanara1898/rest-project:latest
+            docker pull dayanara1898/html-project:latest
             # Iniciar un nuevo contenedor con la imagen actualizada
-            docker run -d --name rest-container -p 80:80 dayanara1898/rest-project:latest
+            docker run -d --name html-container -p 80:80 dayanara1898/html-project:latest
